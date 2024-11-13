@@ -16,19 +16,110 @@
         </properties>
     </rule>
 
+    <rule ref="Generic.PHP.ForbiddenFunctions">
+        <properties>
+            <property name="forbiddenFunctions" type="array">
+                <element key="chop" value="rtrim"/>
+                <element key="close" value="closedir"/>
+                <element key="delete" value="unset"/>
+                <element key="doubleval" value="floatval"/>
+                <element key="fputs" value="fwrite"/>
+                <element key="ini_alter" value="ini_set"/>
+                <element key="is_double" value="is_float"/>
+                <element key="is_integer" value="is_int"/>
+                <element key="is_long" value="is_int"/>
+                <element key="is_null" value="null"/>
+                <element key="is_real" value="is_float"/>
+                <element key="is_writeable" value="is_writable"/>
+                <element key="join" value="implode"/>
+                <element key="key_exists" value="array_key_exists"/>
+                <element key="pos" value="current"/>
+                <element key="settype" value="null"/>
+                <element key="show_source" value="highlight_file"/>
+                <element key="sizeof" value="count"/>
+                <element key="strchr" value="strstr"/>
+            </property>
+        </properties>
+    </rule>
+
     <rule ref="LaminasCodingStandard">
         <exclude name="Generic.Files.LineLength"/>
         <exclude name="Generic.Formatting.MultipleStatementAlignment"/>
         <exclude name="Generic.Formatting.SpaceAfterNot"/>
+        <exclude name="Generic.PHP.ForbiddenFunctions"/>
         <exclude name="SlevomatCodingStandard.Namespaces.ReferenceUsedNamesOnly"/>
         <exclude name="WebimpressCodingStandard.Arrays.DoubleArrow"/>
         <exclude name="WebimpressCodingStandard.Arrays.Format"/>
+        <exclude name="WebimpressCodingStandard.Arrays.TrailingArrayComma.MissingTrailingComma"/>
+        <exclude name="WebimpressCodingStandard.NamingConventions.ValidVariableName"/>
+        <exclude name="WebimpressCodingStandard.NamingConventions.Trait"/>
     </rule>
 
+    <rule ref="PSR12.Classes.AnonClassDeclaration">
+        <exclude name="PSR12.Classes.AnonClassDeclaration.SpaceAfterKeyword"/>
+    </rule>
 
     <rule ref="SlevomatCodingStandard.Commenting.InlineDocCommentDeclaration">
         <properties>
             <property name="allowDocCommentAboveReturn" value="true"/>
+            <property name="allowAboveNonAssignment" value="true"/>
+        </properties>
+    </rule>
+    <rule ref="SlevomatCodingStandard.Commenting.DocCommentSpacing">
+        <properties>
+            <property name="linesCountBeforeFirstContent" value="0"/>
+            <property name="linesCountAfterLastContent" value="0"/>
+            <property name="linesCountBetweenDescriptionAndAnnotations" value="1"/>
+            <property name="linesCountBetweenAnnotationsGroups" value="1"/>
+            <property name="annotationsGroups" type="array">
+                <element value="
+                    @internal,
+                    @deprecated,
+                    @readonly,
+                    @psalm-immutable,
+                "/>
+                <element value="
+                    @link,
+                    @uses,
+                    @see,
+                    @copyright,
+                    @license,
+                "/>
+                <element value="
+                    @ORM\,
+                    @ODM\,
+                    @PHPCR\,
+                "/>
+                <element value="
+                    @property,
+                "/>
+                <element value="
+                    @method,
+                "/>
+                <element value="
+                    @param,
+                    @psalm-param,
+                    @psalm-var,
+                    @phpstan-param,
+                "/>
+                <element value="
+                    @return,
+                    @psalm-return,
+                    @phpstan-return,
+                "/>
+                <element value="
+                    @throws,
+                "/>
+                <element value="
+                    @template,
+                    @template-extends,
+                    @template-implements,
+                "/>
+                <element value="
+                    @psalm-supress,
+                    @phpstan-ignore,
+                "/>
+            </property>
         </properties>
     </rule>
     <rule ref="SlevomatCodingStandard.ControlStructures.DisallowYodaComparison"/>
@@ -52,4 +143,13 @@
     <rule ref="Squiz.Arrays.ArrayDeclaration.DoubleArrowNotAligned" />
     <rule ref="Squiz.Arrays.ArrayDeclaration.NoComma" />
     <rule ref="Squiz.Arrays.ArrayDeclaration.SpaceAfterComma" />
+    <rule ref="Squiz.Functions.MultiLineFunctionDeclaration">
+        <exclude name="Squiz.Functions.MultiLineFunctionDeclaration.EmptyLine"/>
+    </rule>
+
+    <rule ref="WebimpressCodingStandard.Commenting.DocComment">
+        <exclude name="WebimpressCodingStandard.Commenting.DocComment.InheritDoc"/>
+        <exclude name="WebimpressCodingStandard.Commenting.DocComment.InheritDocTag"/>
+        <exclude name="WebimpressCodingStandard.Commenting.DocComment.MissingBlankLine"/>
+    </rule>
 </ruleset>
